@@ -50,29 +50,53 @@ class Matrix:
 
     # Метод для множення матриці на матрицю.
     def multiply(self, matrix):
-        result = [[0 for j in range(len(matrix[i]))] for i in
+        mtrx_mult = [[0 for j in range(len(matrix[i]))] for i in
                   range(len(self.matrix))]
         for i in range(len(self.matrix)):
             for j in range(len(matrix[0])):
                 for k in range(len(matrix)):
-                    result[i][j] += self.matrix[i][k] * matrix[k][j]
-        return result
+                    mtrx_mult[i][j] += self.matrix[i][k] * matrix[k][j]
+        return mtrx_mult
 
     def getMultiply(self, matrix):
         return self.get_readable_matrix_string(self.multiply(matrix))
 
     # Метод для ділення матриці на матрицю.
     def divide(self, matrix):
-        result_1 = [[0 for j in range(len(matrix[i]))] for i in
+        mtrx_div = [[0 for j in range(len(matrix[i]))] for i in
                   range(len(self.matrix))]
         for i in range(len(self.matrix)):
             for j in range(len(matrix[0])):
                 for k in range(len(matrix)):
-                    result_1[i][j] += self.matrix[i][k] / matrix[k][j]
-        return result_1
+                    mtrx_div[i][j] += self.matrix[i][k] / matrix[k][j]
+        return mtrx_div
 
     def getDivide(self, matrix):
         return self.get_readable_matrix_string(self.divide(matrix))
+
+    # Метод для додавання матриць.
+    def addition(self, matrix):
+        mtrx_add = [[0 for j in range(len(matrix[i]))] for i in
+                    range(len(self.matrix))]
+        for i in range(len(self.matrix)):
+            for j in range(len(matrix[0])):
+                    mtrx_add[i][j] += self.matrix[i][j] + matrix[i][j]
+        return mtrx_add
+
+    def getAddition(self, matrix):
+        return self.get_readable_matrix_string(self.addition(matrix))
+
+    # Метод для віднімання матриць.
+    def subtracting(self, matrix):
+        mtrx_sub = [[0 for j in range(len(matrix[i]))] for i in
+                    range(len(self.matrix))]
+        for i in range(len(self.matrix)):
+            for j in range(len(matrix[0])):
+                mtrx_sub[i][j] += self.matrix[i][j] - matrix[i][j]
+        return mtrx_sub
+
+    def getSubtracting(self, matrix):
+        return self.get_readable_matrix_string(self.subtracting(matrix))
 
     # Метод для множення матриці на число.
     def __mul__(self, other):
@@ -100,11 +124,19 @@ print(mtrx_2)
 print('\nMultiplication (mtrx_2 * mtrx_1):')
 print(mtrx_2.getMultiply(mtrx_1))
 
-# Множення матриці на число.
-print('\nMatrix 1 multiplication by 3:')
-print(mtrx_1 * 3)
-
 # Ділення матриці на матрицю.
 print('\nDivide (mtrx_2 / mtrx_1):')
 print(mtrx_2.getDivide(mtrx_1))
+
+# Додаваня матриці 2 до матриц 1.
+print('\nAddition (mtrx_2 + mtrx_1):')
+print(mtrx_2.getAddition(mtrx_1))
+
+# Віднімання матриці 2 від матриці 1.
+print('\nSubtracting (mtrx_2 - mtrx_1):')
+print(mtrx_2.getSubtracting(mtrx_1))
+
+# Множення матриці на число.
+print('\nMatrix 1 multiplication by 3:')
+print(mtrx_1 * 3)
 
