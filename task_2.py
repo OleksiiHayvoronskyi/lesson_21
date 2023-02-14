@@ -13,8 +13,8 @@ for row in matrix_1:
     print(row)
 
 # Транспонування матриці.
-matrix_2 = [[matrix_1[j][i] for j in range(len(matrix_1))]
-            for i in range(len(matrix_1[0]))]
+matrix_2 = [[matrix_1[j][i] for j in range(len(matrix_1))] for i in
+            range(len(matrix_1[0]))]
 print('Matrix 2. Transpose matrix:')
 for row in matrix_2:
     print(row)
