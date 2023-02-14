@@ -18,7 +18,7 @@ class Matrix:
     # Метод для створення матриці.
     def get_matrix(self, n, m):
         num = 1
-        matrix = [[None for j in range(m)] for i in range(n)]
+        matrix = [[0 for j in range(m)] for i in range(n)]
         for i in range(len(matrix)):
             for j in range(len(matrix[i])):
                 matrix[i][j] = num
@@ -61,6 +61,19 @@ class Matrix:
     def getMultiply(self, matrix):
         return self.get_readable_matrix_string(self.multiply(matrix))
 
+    # Метод для ділення матриці на матрицю.
+    def divide(self, matrix):
+        result_1 = [[0 for j in range(len(matrix[i]))] for i in
+                  range(len(self.matrix))]
+        for i in range(len(self.matrix)):
+            for j in range(len(matrix[0])):
+                for k in range(len(matrix)):
+                    result_1[i][j] += self.matrix[i][k] / matrix[k][j]
+        return result_1
+
+    def getDivide(self, matrix):
+        return self.get_readable_matrix_string(self.divide(matrix))
+
     # Метод для множення матриці на число.
     def __mul__(self, other):
         if isinstance(other, Matrix):
@@ -74,17 +87,9 @@ mtrx_1 = Matrix(2, 3)
 print('Matrix 1:')
 print(mtrx_1)
 
-# Пошук елемента в матриці.
-# print('Elem:', m1.getElement(2, 2))
-
-# m1.setElement(2, 2, -10)
+# Транспонування матриці.
 print('\nTranspose matrix 1:')
 print(mtrx_1.getTranspose())
-
-# print(m1)
-#
-# m1.doTranspose()
-# print(m1)
 
 # Створюю матрицю 2.
 mtrx_2 = Matrix(2, 3)
@@ -95,13 +100,11 @@ print(mtrx_2)
 print('\nMultiplication (mtrx_2 * mtrx_1):')
 print(mtrx_2.getMultiply(mtrx_1))
 
-# print('mtrx_2 * mtrx_1:')
-# print(mtrx_2 * mtrx_1)
-
-# print('Matrix 1:')
-# print(mtrx_1)
-
 # Множення матриці на число.
 print('\nMatrix 1 multiplication by 3:')
 print(mtrx_1 * 3)
+
+# Ділення матриці на матрицю.
+print('\nDivide (mtrx_2 / mtrx_1):')
+print(mtrx_2.getDivide(mtrx_1))
 
